@@ -36,16 +36,18 @@ public class ArrayList <T>{
 	
 	
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
-		T[] arr2=(T[]) new Object[arr.length];
-		for (int i = 0; i < arr2.length; i++) {
+		T[] arr3=(T[]) new Object[arr.length+1];
+		for (int i = 0; i < arr.length+1; i++) {
 			if (i==loc) {
-			arr2[i]=val;
+			arr3[i]=val;
+			arr3[i+1]=arr[i];
 			}
-			else {
-				arr2[i+1]=arr[i];
+			else if (i<loc) {
+				arr3[i]=arr[i];
 			}
+			
 		}
-		arr=arr2;
+		arr=arr3;
 	}
 	
 	public void set(int loc, T val) throws IndexOutOfBoundsException {
