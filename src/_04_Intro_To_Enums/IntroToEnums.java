@@ -7,7 +7,7 @@ public class IntroToEnums {
 	// The syntax for an enum is like this:
 	enum DataTypes {
 		// Every entry must be unique
-		INTEGER, DOUBLE, BOOLEAN, LONG, SHORT, BYTE
+		INTEGER, DOUBLE, BOOLEAN, LONG, SHORT, BYTE, SOLID
 	}
 	
 	// Look at the StatesOfMatter enum for another example
