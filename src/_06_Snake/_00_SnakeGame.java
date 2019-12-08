@@ -88,10 +88,10 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		switch (choice) {
 		case "Beginner":
 			timer.setDelay(1000);
-			
+
 		case "Moderate":
 			timer.setDelay(800);
-			
+
 		case "Expert":
 			timer.setDelay(600);
 		}
@@ -117,33 +117,51 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// if an arrow key is pressed, set the snake's
 		// direction accordingly
 		case 38:
-			snake.setDirection();
+			snake.setDirection(Direction.UP);
+		case 40:
+			snake.setDirection(Direction.DOWN);
+		case 37:
+			snake.setDirection(Direction.LEFT);
+		case 39:
+			snake.setDirection(Direction.RIGHT);
 		// if the space key is pressed, call the snake's feed method
+		case 32:
+			snake.feed();
+	}
+	}
 
-	}
-	}
 	private void setFoodLocation() {
+		Random r=new Random();
+		int randy= r.nextInt(750);
+		int randy1=r.nextInt(600);
 		// 1. Create a new Location object that is set to a random location
-
+		Location object= new Location(randy,randy1);
 		// 2. set the foodLocation variable equal to the Location object you just
 		// created.
+		foodLocation=object;
 		// use the snake's isLocationOnSnake method to make sure you don't put the food
 		// on the snake
-
+		snake.isLocationOnSnake(foodLocation);
 	}
 
 	private void gameOver() {
 
 		// 1. stop the timer
-
+		timer.stop();
 		// 2. tell the user their snake is dead
-
+		JOptionPane.showMessageDialog(null, "Your Snake is Dead");
 		// 3. ask them if they want to play again.
-
+		int n=JOptionPane.showConfirmDialog(null, "Do You want to play again?");
 		// 4. if they want to play again
 		// reset the snake and the food and start the timer
 		// else, exit the game
-
+		if (n==0) {
+			snake.reset(foodLocation);
+			timer.start();
+		}
+		else {
+			
+		}
 	}
 
 	@Override
@@ -154,7 +172,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// 1. update the snake
-
+		snake.update();
 		// 2. if the snake is colliding with its own body
 		// or if the snake is out of bounds, call gameOver
 
@@ -162,5 +180,6 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// feed the snake and set the food location
 
 		// 4. call panel.repaint();
+		panel.repaint();
 	}
 }

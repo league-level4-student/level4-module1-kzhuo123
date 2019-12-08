@@ -5,8 +5,5 @@ public enum Zodiac {
 	LIBRA, SCORPIO, SAGITTARIUS, CAPRICORN, AQUARIUS, PISCES;
 
 public void  check( ) {
-		if (condition) {
-			
-		}
-	}
+		
 }

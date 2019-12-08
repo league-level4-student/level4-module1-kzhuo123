@@ -2,6 +2,8 @@ package _00_Intro_To_Templates;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 // A template is a way to define one variable that can act as different types.
 // Templates can be used in methods and classes. 
 // The syntax for templates are the angle brackets <>
@@ -18,7 +20,8 @@ public class IntroToTemplates {
 		Random r = new Random();
 		//Here we are calling calcStuff and passing in a Random object
 		i.calcStuff(r, 6);
-		
+		int n=JOptionPane.showConfirmDialog(null, "Do You want to play again?");
+		System.out.println(n);
 		//Here we create two object of the SomeClass class and 
 		//define its template variable to be two different types, String and Integer
 		SomeClass<String> scObj = new SomeClass<String>("sodapop");
