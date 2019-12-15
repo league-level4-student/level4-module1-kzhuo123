@@ -2,6 +2,7 @@ package _06_Snake;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -156,11 +157,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// reset the snake and the food and start the timer
 		// else, exit the game
 		if (n==0) {
-			snake.reset(foodLocation);
+			snake.reset(new Location(WIDTH / 2, HEIGHT / 2));
+			setFoodLocation();
 			timer.start();
 		}
 		else {
-			
+			window.setVisible(false);
+			window.dispose();
 		}
 	}
 
@@ -175,10 +178,15 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		snake.update();
 		// 2. if the snake is colliding with its own body
 		// or if the snake is out of bounds, call gameOver
-
+		if (snake.isHeadCollidingWithBody()||snake.isOutOfBounds()) {
+			gameOver();
+		}
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
-
+		if (snake.getHeadLocation()==foodLocation) {
+			snake.feed();
+			setFoodLocation();
+		}
 		// 4. call panel.repaint();
 		panel.repaint();
 	}
