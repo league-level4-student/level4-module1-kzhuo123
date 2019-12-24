@@ -7,3 +7,4 @@ public enum Zodiac {
 public void  check( ) {
 		
 }
+}
